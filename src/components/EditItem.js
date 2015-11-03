@@ -79,14 +79,13 @@ class EditItem extends Component {
       >
         <View style={styles.innerScroller}>
 
-      <View
-        style={floatingButton}
-      >
-        <Image
-          style={styles.previewImage}
-          source={{uri: thisItem.imageUri, isStatic: true}}
-        />
-      </View>
+          {thisItem.imageUri ? <View style={floatingButton}>
+              <Image
+                style={styles.previewImage}
+                source={{uri: thisItem.imageUri, isStatic: true}}
+              />
+            </View> : null}
+
       <Text style={styles.instructions}>{thisItem.title}</Text>
       { includeCheckInAndOut && !thisItem.taken ? checkOutButton : null}
       { includeCheckInAndOut && thisItem.taken ? checkInButton : null}

@@ -39,22 +39,27 @@ class MyStuffList extends Component {
   }
 
   renderRow(rowData:any) {
-    return <TouchableHighlight onPress={() => {
-      return this.props.navigator.push({name: 'Check in/out', uuid: rowData.uuid, index: 1});
-    }}>
-      <View style={styles.item}>
+    return (
+      <TouchableHighlight
+        onPress={() => {
+          return this.props.navigator.push({name: 'Check in/out', uuid: rowData.uuid, index: 1});
+        }}
+      >
+        <View style={styles.item}>
+          {
+            rowData.imageUri ? <Image style={styles.previewImage} source={{uri: rowData.imageUri, isStatic: true}}/> : null
+          }
 
+          <View>
+            <Text style={styles.itemDescription}>{rowData.title}</Text>
+            { rowData.taken ? <Text style={styles.itemDescription}>{rowData.takenBy}</Text> : null}
+            { rowData.taken ? <Text style={styles.itemDescription}>{rowData.takenSince.fromNow()}</Text> : null}
 
-      <Image style={styles.previewImage} source={{uri: rowData.imageUri, isStatic: true}}/>
-      <View>
-        <Text style={styles.itemDescription}>{rowData.title}</Text>
-        { rowData.taken ? <Text style={styles.itemDescription}>{rowData.takenBy}</Text> : null}
-        { rowData.taken ? <Text style={styles.itemDescription}>{rowData.takenSince.fromNow()}</Text> : null}
+          </View>
 
-      </View>
-
-    </View>
-    </TouchableHighlight>;
+        </View>
+      </TouchableHighlight>
+    );
   }
 
   render() {
