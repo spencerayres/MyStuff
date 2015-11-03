@@ -18,6 +18,8 @@ import createLogger from 'redux-logger';
 import * as reducers from './src/reducers/index';
 import {indexStyles} from './src/styles';
 
+// LESSON Switching to the real app
+
 // EDIT HERE
 const initialRouteName = 'Hello World'; // My Stuff!
 // DONE EDITING
@@ -36,11 +38,6 @@ function prepareStore() {
 }
 
 const store = prepareStore();
-
-const firstRoute = {
-  name: 'Hello!',
-  component: MyStuffList,
-};
 
 const NavigationBarRouteMapper = {
 
