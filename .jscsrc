@@ -1,0 +1,9 @@
+{
+    "preset": "airbnb",
+    "esprima": "./node_modules/babel-jscs",
+    "fileExtensions": [
+      ".js",
+      ".jsx"
+    ],
+    "disallowSpaceAfterObjectKeys": null
+  }
