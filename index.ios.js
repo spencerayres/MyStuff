@@ -21,7 +21,7 @@ import {indexStyles} from './src/styles';
 // LESSON Switching to the real app
 
 // EDIT HERE
-const initialRouteName = 'Hello World'; // My Stuff!
+const initialRouteName = 'My Stuff!'; // My Stuff!
 // DONE EDITING
 
 function prepareStore() {
@@ -117,8 +117,36 @@ class MyStuff extends Component {
 
           // LESSON: Add storage by wrapping this in <StorageMonitor/>
 
-          return (
-            navigator
+          return ( 
+            <StorageMonitor> 
+            <Navigator
+            initialRoute={{name: initialRouteName, index: 0}}
+            renderScene={(route, navigator) => {
+              if (route.name == 'My Stuff!') {
+                return <MyStuffList navigator={navigator}/>;
+              } else if (route.name == 'Add an item') {
+                return <AddItem navigator={navigator}/>;
+              } else if (route.name == 'Check in/out') {
+                return <EditItem navigator={navigator} itemUuid={route.uuid}/>;
+              } else if (route.name == 'Hello World') {
+                return <HomePage/>;
+              }
+
+              return <HomePage/>;
+            }}
+
+            navigationBar={
+              <Navigator.NavigationBar
+                style={styles.navBar}
+                routeMapper={NavigationBarRouteMapper}
+                />
+            }
+            configureScene={(route) => {
+              return Navigator.SceneConfigs.HorizontalSwipeJump;
+            }}
+
+            /> 
+            </ StorageMonitor>
           );
         }}
       </Provider>

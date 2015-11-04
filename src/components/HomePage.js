@@ -13,7 +13,7 @@ class HomePage extends Component {
     return (
       <View style={styles.container}>
         <Image source={require('image!logo')} style={styles.image} />
-        <Text style={styles.title}>Hello World!</Text>
+        <Text style={styles.title}>Spencer is Great!</Text>
       </View>
     );
   }
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 36,
-    fontFamily: 'DINAlternate-Bold',
+    fontFamily: 'Avenir',
   },
   callToAction: {
     padding: 20,

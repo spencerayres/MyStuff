@@ -18,7 +18,7 @@ class EditItem extends Component {
   takeItem() {
     // LESSON Change wording on the prompt
     AlertIOS.prompt(
-      'CHANGE THIS',
+      'Who',
       [
         {text: 'Cancel', onPress: () => null},
         {
@@ -47,12 +47,13 @@ class EditItem extends Component {
     }
 
     // LESSON Add onPress handlers to buttons () => this.take/returnItem()
-    const includeCheckInAndOut = false;
+    const includeCheckInAndOut = true;
 
     const checkOutButton = <MKButton
       backgroundColor={MKColor.Blue}
       {...floatingButton}
       style={styles.getStartedButton}
+      onPress={()=> this.takeItem()}
       >
       <Text pointerEvents='none'
             style={styles.getStartedButtonText}>
@@ -64,6 +65,7 @@ class EditItem extends Component {
       backgroundColor={MKColor.Green}
       {...floatingButton}
       style={styles.getStartedButton}
+       onPress={()=> this.returnItem()}
       >
       <Text pointerEvents='none'
             style={styles.getStartedButtonText}>
