@@ -1,6 +1,6 @@
 import React, {AppRegistry, StyleSheet, Text, View, Component, Image, Navigator, PixelRatio, TouchableOpacity} from 'react-native';
 
-const brandColour = '#F15A24';
+const brandColour = '#488282';
 const fontFamily = 'System';
 
 module.exports = {
