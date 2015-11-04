@@ -16,8 +16,9 @@ class EditItem extends Component {
   }
 
   takeItem() {
+    // LESSON Change wording on the prompt
     AlertIOS.prompt(
-      'Who\'s taking this?',
+      'CHANGE THIS',
       [
         {text: 'Cancel', onPress: () => null},
         {
@@ -45,6 +46,31 @@ class EditItem extends Component {
       return null;
     }
 
+    // LESSON Add onPress handlers to buttons () => this.take/returnItem()
+    const includeCheckInAndOut = false;
+
+    const checkOutButton = <MKButton
+      backgroundColor={MKColor.Blue}
+      {...floatingButton}
+      style={styles.getStartedButton}
+      >
+      <Text pointerEvents='none'
+            style={styles.getStartedButtonText}>
+        Check out
+      </Text>
+    </MKButton>;
+
+    const checkInButton = <MKButton
+      backgroundColor={MKColor.Green}
+      {...floatingButton}
+      style={styles.getStartedButton}
+      >
+      <Text pointerEvents='none'
+            style={styles.getStartedButtonText}>
+        Check in
+      </Text>
+    </MKButton>;
+
     return <View style={styles.scene}>
       <ScrollView
         ref='scroller'
@@ -53,37 +79,16 @@ class EditItem extends Component {
       >
         <View style={styles.innerScroller}>
 
-      <View
-        style={floatingButton}
-      >
-        <Image
-          style={styles.previewImage}
-          source={{uri: thisItem.imageUri, isStatic: true}}
-        />
-      </View>
+          {thisItem.imageUri ? <View style={floatingButton}>
+              <Image
+                style={styles.previewImage}
+                source={{uri: thisItem.imageUri, isStatic: true}}
+              />
+            </View> : null}
+
       <Text style={styles.instructions}>{thisItem.title}</Text>
-      { !thisItem.taken ? <MKButton
-          backgroundColor={MKColor.Blue}
-          {...floatingButton}
-          style={styles.getStartedButton}
-          onPress={() => this.takeItem()}
-          >
-          <Text pointerEvents='none'
-                style={styles.getStartedButtonText}>
-            Check out
-          </Text>
-        </MKButton> : null}
-      { thisItem.taken ? <MKButton
-          backgroundColor={MKColor.Green}
-          {...floatingButton}
-          style={styles.getStartedButton}
-          onPress={() => this.returnItem()}
-          >
-          <Text pointerEvents='none'
-                style={styles.getStartedButtonText}>
-            Check in
-          </Text>
-        </MKButton> : null}
+      { includeCheckInAndOut && !thisItem.taken ? checkOutButton : null}
+      { includeCheckInAndOut && thisItem.taken ? checkInButton : null}
       <MKButton
           backgroundColor={MKColor.Red}
           {...floatingButton}
